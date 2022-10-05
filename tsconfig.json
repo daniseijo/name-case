@@ -1,7 +1,5 @@
 {
+  "extends": "@tsconfig/node16/tsconfig.json",
   "include": ["src/**/*"],
-  "exclude": ["node_modules"],
-  "compilerOptions": {
-    "esModuleInterop": true
-  }
+  "exclude": ["node_modules"]
 }

@@ -1,17 +1,19 @@
-# NameCase
+# name-case
 
 [![npm][ico-npm]][link-npm]
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-coveralls]][link-coveralls]
 [![npm bundle size][ico-bundle-size]][link-bundle-size]
 
-NameCase is a fully typed implementation of `Lingua::EN::NameCase`, a library for converting strings to be properly cased. This is good for converting denormalized data to human friendly data.
+name-case is a fully typed implementation of `Lingua::EN::NameCase`, a library for converting strings to be properly cased. This is good for converting denormalized data to human friendly data.
+
+**NOTE:** This is a fork from the discontinued library [@foundernest/namecase](https://github.com/foundernest/namecase). I was the author but I don't work in that company anymore. I still wanted to continue improving the library. 
 
 ## Description
 
-Forenames and surnames are often stored either entirely in UPPERCASE or lowercase. This library allows you to convert names into the correct case where possible. Although forenames and surnames are typically stored separately if they do appear in a single string, whitespace-separated, NameCase deals correctly with them.
+Forenames and surnames are often stored either entirely in UPPERCASE or lowercase. This library allows you to convert names into the correct case where possible. Although forenames and surnames are typically stored separately if they do appear in a single string, whitespace-separated, name-case deals correctly with them.
 
-Currently NameCase correctly name cases names which include any of the following:
+Currently name-case correctly name cases names which include any of the following:
 
 ```txt
 Mc, Mac, al, el, ap, bat, ben, bin, binti, binte, da, de, das, dos, delle, della, di, du, del, der, den, ten, ter, la, le, lo, van and von.
@@ -24,13 +26,13 @@ It correctly deals with names which contain apostrophes and hyphens too.
 Via npm
 
 ```bash
-npm install @foundernest/namecase
+npm install name-case
 ```
 
 Via yarn
 
 ```bash
-yarn add @foundernest/namecase
+yarn add name-case
 ```
 
 ## Usage
@@ -38,7 +40,7 @@ yarn add @foundernest/namecase
 ### Basic usage
 
 ```typescript
-import { nameCase } from '@foundernest/namecase';
+import { nameCase } from 'name-case';
 
 nameCase('KEITH');               // => Keith
 nameCase('LEIGH-WILLIAMS');      // => Leigh-Williams
@@ -56,7 +58,7 @@ nameCase('VAN DYKE');            // => van Dyke
 You can override the default options by calling the `nameCase` function with the `EnvironmentOptions` optional parameter:
 
 ```typescript
-import { nameCase } from '@foundernest/namecase';
+import { nameCase } from 'name-case';
 
 nameCase('macmurdo');                        // => MacMurdo
 nameCase('macmurdo', { irish: false });      // => Macmurdo
@@ -65,7 +67,7 @@ nameCase('macmurdo', { irish: false });      // => Macmurdo
 You can also set the options of all the subsequent calls:
 
 ```typescript
-import { nameCase, setOptions } from '@foundernest/namecase';
+import { nameCase, setOptions } from 'name-case';
 
 nameCase('macmurdo');               // => MacMurdo
 setOptions({ irish: false });
@@ -75,7 +77,7 @@ nameCase('macmurdo');               // => Macmurdo
 Or you can even create a new `Environment` object with custom options:
 
 ```typescript
-import Environment from '@foundernest/namecase';
+import Environment from 'name-case';
 
 const ncEnv = new Environment({
   lazy: false
@@ -97,7 +99,7 @@ ncEnv.nameCase('Na li');     // => Na Li
 ## Exclude Post-Nominals
 
 ```typescript
-import { excludePostNominals, nameCase } from '@foundernest/namecase';
+import { excludePostNominals, nameCase } from 'name-case';
 
 nameCase('ČERNÝ MOST');         // Černý MOst
 excludePostNominals('MOst');
@@ -142,18 +144,20 @@ Typescript version:
 
 - Copyright &copy; [Daniel Seijo][link-author]
 
+**NOTE:** This is a fork from [foundernest/namecase](https://github.com/foundernest/namecase) since I don't work there anymore but I still wanted to continue improving the library. 
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
-[ico-npm]: https://img.shields.io/npm/v/@foundernest/namecase
-[ico-travis]: https://travis-ci.com/foundernest/namecase.svg?branch=master
-[ico-coveralls]: https://coveralls.io/repos/github/foundernest/namecase/badge.svg?branch=master
-[ico-bundle-size]: https://img.shields.io/bundlephobia/min/@foundernest/namecase
+[ico-npm]: https://img.shields.io/npm/v/@daniseijo/name-case
+[ico-travis]: https://travis-ci.com/daniseijo/name-case.svg?branch=master
+[ico-coveralls]: https://coveralls.io/repos/github/daniseijo/name-case/badge.svg?branch=master
+[ico-bundle-size]: https://img.shields.io/bundlephobia/min/@daniseijo/name-case
 
-[link-npm]: https://www.npmjs.org/package/@foundernest/namecase
-[link-travis]: https://travis-ci.com/foundernest/namecase
-[link-coveralls]: https://coveralls.io/github/foundernest/namecase?branch=master
-[link-bundle-size]: https://bundlephobia.com/result?p=@foundernest/namecase
+[link-npm]: https://www.npmjs.org/package/@daniseijo/name-case
+[link-travis]: https://travis-ci.com/daniseijo/name-case
+[link-coveralls]: https://coveralls.io/github/daniseijo/name-case?branch=master
+[link-bundle-size]: https://bundlephobia.com/result?p=@daniseijo/name-case
 
 [link-author]: https://github.com/daniseijo

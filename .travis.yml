@@ -1,8 +1,6 @@
 language: node_js
-dist: xenial
-os: linux
 node_js:
-  - 'node'
+  - 16
 cache:
   yarn: true
   directories:

@@ -114,3 +114,6 @@ dist
 .yarn/build-state.yml
 .pnp.*
 © 2020 GitHub, Inc.
+
+# VS Code
+.vscode
