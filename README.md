@@ -151,13 +151,13 @@ Typescript version:
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 [ico-npm]: https://img.shields.io/npm/v/@daniseijo/name-case
-[ico-travis]: https://travis-ci.com/daniseijo/name-case.svg?branch=master
-[ico-coveralls]: https://coveralls.io/repos/github/daniseijo/name-case/badge.svg?branch=master
+[ico-travis]: https://app.travis-ci.com/daniseijo/name-case.svg?branch=main
+[ico-coveralls]: https://coveralls.io/repos/github/daniseijo/name-case/badge.svg?branch=main
 [ico-bundle-size]: https://img.shields.io/bundlephobia/min/@daniseijo/name-case
 
 [link-npm]: https://www.npmjs.org/package/@daniseijo/name-case
-[link-travis]: https://travis-ci.com/daniseijo/name-case
-[link-coveralls]: https://coveralls.io/github/daniseijo/name-case?branch=master
+[link-travis]: https://app.travis-ci.com/daniseijo/name-case
+[link-coveralls]: https://coveralls.io/github/daniseijo/name-case?branch=main
 [link-bundle-size]: https://bundlephobia.com/result?p=@daniseijo/name-case
 
 [link-author]: https://github.com/daniseijo
