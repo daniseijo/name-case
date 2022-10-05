@@ -150,14 +150,14 @@ Typescript version:
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
-[ico-npm]: https://img.shields.io/npm/v/@daniseijo/name-fixer
+[ico-npm]: https://img.shields.io/npm/v/name-fixer
 [ico-travis]: https://app.travis-ci.com/daniseijo/name-fixer.svg?branch=main
 [ico-coveralls]: https://coveralls.io/repos/github/daniseijo/name-fixer/badge.svg?branch=main
-[ico-bundle-size]: https://img.shields.io/bundlephobia/min/@daniseijo/name-fixer
+[ico-bundle-size]: https://img.shields.io/bundlephobia/min/name-fixer
 
-[link-npm]: https://www.npmjs.org/package/@daniseijo/name-fixer
+[link-npm]: https://www.npmjs.org/package/name-fixer
 [link-travis]: https://app.travis-ci.com/daniseijo/name-fixer
 [link-coveralls]: https://coveralls.io/github/daniseijo/name-fixer?branch=main
-[link-bundle-size]: https://bundlephobia.com/result?p=@daniseijo/name-fixer
+[link-bundle-size]: https://bundlephobia.com/result?p=name-fixer
 
 [link-author]: https://github.com/daniseijo
