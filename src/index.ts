@@ -4,7 +4,7 @@ type EnvironmentOptions = {
   spanish?: boolean
   roman?: boolean
   hebrew?: boolean
-  postnominal?: boolean
+  postNominal?: boolean
 }
 
 class Environment {
@@ -82,9 +82,9 @@ class Environment {
     'HNC', 'HNCert', 'HND', 'HNDip',
     'ICTTech', 'IDSM', 'IEng', 'IMarEng', 'IOMCPM', 'ISO',
     'J', 'JP', 'JrLog',
-    'KBE', 'KC', 'KCB', 'KCIE', 'KCMmG', 'KCSI', 'KCVO', 'KG', 'KP', 'KT',
-    'LFHOM', 'LG', 'LJ', 'LLB', 'LLD', 'LLM', 'Log', 'LPE', 'LT', 'LVO',
-    'MA', 'MAcc', 'MAnth', 'MArch', 'MarEngTech', 'MB', 'MBA', 'MBChB', 'MBE', 'MBEIOM', 'MBiochem', 'MC', 'MCEM', 'MCGI', 'MCh.', 'MChem', 'MChiro', 'MClinRes', 'MComp', 'MCOptom', 'MCSM', 'MCSP', 'MD', 'MEarthSc', 'MEng', 'MEnt', 'MEP', 'MFHOM', 'MFin', 'MFPM', 'MGeol', 'MILT', 'MJur', 'MLA', 'MLitt', 'MM', 'MMath', 'MMathStat', 'MMORSE', 'MMus', 'MOst', 'MP', 'MPAMEd', 'MPharm', 'MPhil', 'MPhys', 'MRCGP', 'MRCOG', 'MRCP', 'MRCPath', 'MRCPCHFRCPCH', 'MRCPsych', 'MRCS', 'MRCVS', 'MRes', 'MS', 'MSc', 'MScChiro', 'MSci', 'MSCR', 'MSM', 'MSocSc', 'MSP', 'MSt', 'MSW', 'MSYP', 'MVO',
+    'KBE', 'KC', 'KCB', 'KCIE', 'KCMG', 'KCSI', 'KCVO', 'KG', 'KP', 'KT',
+    'LFHOM', 'LG', 'LJ', 'LLB', 'LLD', 'LLM', 'Log', 'LPE', /* 'LT', - excluded, see initial names */ 'LVO',
+    'MA', 'MAcc', 'MAnth', 'MArch', 'MarEngTech', 'MB', 'MBA', 'MBChB', 'MBE', 'MBEIOM', 'MBiochem', 'MC', 'MCEM', 'MCGI', 'MCh.', 'MChem', 'MChiro', 'MClinRes', 'MComp', 'MCOptom', 'MCSM', 'MCSP', 'MD', 'MEarthSc', 'MEng', 'MEnt', 'MEP', 'MFHOM', 'MFin', 'MFPM', 'MGeol', 'MILT', 'MJur', 'MLA', 'MLitt', 'MM', 'MMath', 'MMathStat', 'MMORSE', 'MMus', 'MOst', 'MP', 'MPAMEd', 'MPharm', 'MPhil', 'MPhys', 'MRCGP', 'MRCOG', 'MRCP', 'MRCPath', 'MRCPCHFRCPCH', 'MRCPsych', 'MRCS', 'MRCVS', 'MRes', /* 'MS', - excluded, see initial names */ 'MSc', 'MScChiro', 'MSci', 'MSCR', 'MSM', 'MSocSc', 'MSP', 'MSt', 'MSW', 'MSYP', 'MVO',
     'NPQH',
     'OBE', 'OBI', 'OM', 'OND',
     'PgC', 'PGCAP', 'PGCE', 'PgCert', 'PGCHE', 'PgCLTHE', 'PgD', 'PGDE', 'PgDip', 'PhD', 'PLog', 'PLS',
@@ -96,8 +96,22 @@ class Environment {
     'V100', 'V200', 'V300', 'VC', 'VD', 'VetMB', 'VN', 'VRD'
   ];
 
+  private LOWER_CASE_WORDS = ['The', 'Of', 'And']
+
   // Excluded post-nominals
   private postNominalsExcluded: string[] = []
+
+  // Most two-letter words with no vowels should be kept in all caps as initials
+  private INITIAL_NAME_REGEX = /\b(Aj|[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]{2})\s/
+  private INITIAL_NAME_EXCEPTIONS = [
+    'Mr',
+    'Ms', // Replaces Member of the Senedd post nominal.
+    'Dr',
+    'St',
+    'Jr',
+    'Sr',
+    'Lt', // Replaces Lady of the Order of the Thistle post nominal.
+  ]
 
   private options: EnvironmentOptions = {
     lazy: true,
@@ -105,12 +119,12 @@ class Environment {
     spanish: true,
     roman: true,
     hebrew: true,
-    postnominal: true,
+    postNominal: true,
   }
 
-  private bckOptions: EnvironmentOptions = {}
+  private bckOptions: EnvironmentOptions = { ...this.options }
 
-  constructor(options: EnvironmentOptions) {
+  constructor(options?: EnvironmentOptions) {
     this.setOptions(options)
   }
 
@@ -119,7 +133,7 @@ class Environment {
    *
    * @param options
    */
-  setOptions(options: EnvironmentOptions): void {
+  setOptions(options?: EnvironmentOptions): void {
     this.options = { ...this.options, ...options }
   }
 
@@ -170,6 +184,10 @@ class Environment {
       name = name.replace(pattern, replacement)
     }
 
+    name = this.correctInitialNames(name)
+
+    name = this.correctLowerCaseWords(name)
+
     name = this.processOptions(name)
 
     this.restoreOptions()
@@ -186,7 +204,7 @@ class Environment {
       name = this.updateSpanish(name)
     }
 
-    if (this.options.postnominal) {
+    if (this.options.postNominal) {
       name = this.fixPostNominal(name)
     }
 
@@ -289,8 +307,44 @@ class Environment {
   private updateSpanish(name: string): string {
     for (const conjunction of this.CONJUNCTIONS) {
       name = name.replace(
-        new RegExp(`([\\s,.:;"'-(]|^)${conjunction}([\\s,.:;"'-(]|$)`, 'g'),
+        new RegExp(`([\\s,.:;"'-(]|^)${conjunction}([\\s,:;"'-(]|$)`, 'g'),
         (...matches) => matches[1] + conjunction.toLowerCase() + matches[2]
+      )
+    }
+    return name
+  }
+
+  /**
+   * Correct capitalization of initial names like JJ and TJ.
+   *
+   * @param name
+   *
+   * @return string
+   */
+  private correctInitialNames(name: string): string {
+    return name.replace(this.INITIAL_NAME_REGEX, (...matches) => {
+      const match = matches[0]
+
+      if (this.INITIAL_NAME_EXCEPTIONS.includes(matches[1])) {
+        return match
+      }
+
+      return match.toUpperCase()
+    })
+  }
+
+  /**
+   * Correct lower-case words of titles.
+   *
+   * @param name
+   *
+   * @return string
+   */
+  private correctLowerCaseWords(name: string): string {
+    for (const lowerCase of this.LOWER_CASE_WORDS) {
+      name = name.replace(
+        new RegExp(`([\\s,.:;"'-(]|^)${lowerCase}([\\s,.:;"'-(]|$)`, 'g'),
+        (...matches) => matches[1] + lowerCase.toLowerCase() + matches[2]
       )
     }
     return name
@@ -328,7 +382,7 @@ class Environment {
   }
 }
 
-const defaultEnvironment = new Environment({})
+const defaultEnvironment = new Environment()
 
 export const setOptions = (options: EnvironmentOptions): void => defaultEnvironment.setOptions(options)
 export const excludePostNominals = (values: string | string[]): void => defaultEnvironment.excludePostNominals(values)

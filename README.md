@@ -94,7 +94,7 @@ ncEnv.nameCase('Na li');     // => Na Li
 - `spanish` – Default: `true`. Correct spanish conjunctions `y`, `e` or `i`.
 - `roman` – Default: `true`. Correct roman numbers.
 - `hebrew` – Default: `true`. Correct `ben`, `bat`.
-- `postnominal` – Default: `true`. Correct post-nominal. e.g. `PhD`.
+- `postNominal` – Default: `true`. Correct post-nominal. e.g. `PhD`.
 
 ## Exclude Post-Nominals
 
