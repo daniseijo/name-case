@@ -1,4 +1,4 @@
-import Environment, { nameCase } from '../src'
+import Environment, { nameFixer } from '../src'
 
 describe('Environment', () => {
   // prettier-ignore
@@ -41,29 +41,29 @@ describe('Environment', () => {
     ]
 
   it('returns empty string unaffected', () => {
-    expect(nameCase('')).toBe('')
+    expect(nameFixer('')).toBe('')
   })
 
   it('returns numbers unaffected', () => {
     const properCased = '42'
-    expect(nameCase(properCased.toLowerCase())).toBe(properCased)
+    expect(nameFixer(properCased.toLowerCase())).toBe(properCased)
   })
 
   it('respects internationalization characters', () => {
     const properCased = 'Iñtërnâtiônàlizætiøn'
-    expect(nameCase(properCased.toLowerCase())).toBe(properCased)
+    expect(nameFixer(properCased.toLowerCase())).toBe(properCased)
   })
 
   it('tests static methods with default configuration', () => {
     for (const name of mainNames) {
-      expect(nameCase(name.toLowerCase())).toBe(name)
+      expect(nameFixer(name.toLowerCase())).toBe(name)
     }
   })
 
   it('tests instantiation of a new environment with default configuration', () => {
-    const ncEnvironment = new Environment()
+    const nfEnvironment = new Environment()
     for (const name of mainNames) {
-      expect(ncEnvironment.nameCase(name.toLowerCase())).toBe(name)
+      expect(nfEnvironment.nameFixer(name.toLowerCase())).toBe(name)
     }
   })
 
@@ -144,12 +144,12 @@ describe('Environment', () => {
   // Test http://en.wikipedia.org/wiki/List_of_programmers.
   it('tests list of programmers', () => {
     for (const name of programmers) {
-      expect(nameCase(name.toLowerCase())).toBe(name)
+      expect(nameFixer(name.toLowerCase())).toBe(name)
     }
   })
 
   it('tests lower case words', () => {
     const properCased = 'Prince Philip, Duke of Edinburgh'
-    expect(nameCase(properCased.toLowerCase())).toBe(properCased)
+    expect(nameFixer(properCased.toLowerCase())).toBe(properCased)
   })
 })

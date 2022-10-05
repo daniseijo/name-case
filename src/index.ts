@@ -156,14 +156,14 @@ class Environment {
   }
 
   /**
-   * Main function for NameCase.
+   * Main function for NameFixer.
    *
    * @param name
    * @param options
    *
    * @returns string
    */
-  nameCase(name: string, options: EnvironmentOptions = {}): string {
+  nameFixer(name: string, options: EnvironmentOptions = {}): string {
     if (name === '') return name
 
     this.backupOptions()
@@ -386,7 +386,7 @@ const defaultEnvironment = new Environment()
 
 export const setOptions = (options: EnvironmentOptions): void => defaultEnvironment.setOptions(options)
 export const excludePostNominals = (values: string | string[]): void => defaultEnvironment.excludePostNominals(values)
-export const nameCase = (name: string, options?: EnvironmentOptions): string =>
-  defaultEnvironment.nameCase(name, options)
+export const nameFixer = (name: string, options?: EnvironmentOptions): string =>
+  defaultEnvironment.nameFixer(name, options)
 
 export default Environment

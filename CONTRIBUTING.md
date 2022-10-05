@@ -2,7 +2,7 @@
 
 Contributions are **welcome** and will be fully **credited**.
 
-We accept contributions via Pull Requests on [Github](https://github.com/foundernest/namecase/pulls).
+We accept contributions via Pull Requests on [Github](https://github.com/daniseijo/name-fixer/pulls).
 
 ## Pull Requests
 
