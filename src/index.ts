@@ -39,6 +39,9 @@ class Environment {
     [/\bMacKley/, 'Mackley'],
     [/\bMacHell/, 'Machell'],
     [/\bMacHon/, 'Machon'],
+    [/\bMacKrine/, 'Mackrine'],
+    [/\bMacHira/, 'Machira'],
+    [/\bMacHocho/, 'Machocho']
   ]
 
   // General replacements.
