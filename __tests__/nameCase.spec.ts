@@ -23,6 +23,7 @@ describe('Environment', () => {
       "Mackle", "Macklin", "Mackie",
       "Macquarie", "Machado", "Macevicius",
       "Maciulis", "Macias", "MacMurdo",
+      "MacKrine", "MacHira" "MacHocho",
   
       // Roman numerals
       "Henry VIII", "Louis III", "Louis XIV",
