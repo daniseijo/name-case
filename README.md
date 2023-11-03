@@ -1,7 +1,7 @@
 # name-fixer
 
 [![npm][ico-npm]][link-npm]
-[![Build Status][ico-travis]][link-travis]
+[![Node.js CI][ico-github-actions]][link-github-actions]
 [![Coverage Status][ico-coveralls]][link-coveralls]
 [![npm bundle size][ico-bundle-size]][link-bundle-size]
 
@@ -157,12 +157,12 @@ Typescript version:
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
 
 [ico-npm]: https://img.shields.io/npm/v/name-fixer
-[ico-travis]: https://app.travis-ci.com/daniseijo/name-fixer.svg?branch=main
+[ico-github-actions]: https://github.com/daniseijo/name-fixer/actions/workflows/node.js.yml/badge.svg?branch=main
 [ico-coveralls]: https://coveralls.io/repos/github/daniseijo/name-fixer/badge.svg?branch=main
 [ico-bundle-size]: https://img.shields.io/bundlephobia/min/name-fixer
 
 [link-npm]: https://www.npmjs.org/package/name-fixer
-[link-travis]: https://app.travis-ci.com/daniseijo/name-fixer
+[link-github-actions]: https://github.com/daniseijo/name-fixer/actions/workflows/node.js.yml?branch=main
 [link-coveralls]: https://coveralls.io/github/daniseijo/name-fixer?branch=main
 [link-bundle-size]: https://bundlephobia.com/result?p=name-fixer
 
