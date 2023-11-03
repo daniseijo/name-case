@@ -54,6 +54,9 @@
       "jest --findRelatedTests"
     ]
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "homepage": "https://github.com/daniseijo/name-fixer#readme",
   "author": "Daniel Seijo <daniseijo.dev@gmail.com>",
   "license": "MIT",
