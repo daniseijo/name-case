@@ -227,7 +227,7 @@ class Environment {
     // Lowercase 's
     return name.replace(
       /'([^\s,.:;"'(-])([\s,.:;"'(-]|$)/g,
-      (...matches) => "'" + matches[1].toLowerCase() + matches[2]
+      (...matches) => "'" + matches[1].toLowerCase() + matches[2],
     )
   }
 
@@ -273,7 +273,7 @@ class Environment {
   private updateMac(name: string): string {
     name = name.replace(
       /\b(Ma?c)([A-Za-z]+)/,
-      (...matches) => matches[1] + matches[2].charAt(0).toUpperCase() + matches[2].substring(1)
+      (...matches) => matches[1] + matches[2].charAt(0).toUpperCase() + matches[2].substring(1),
     )
 
     // Now fix "Mac" exceptions
@@ -308,7 +308,7 @@ class Environment {
     for (const conjunction of this.CONJUNCTIONS) {
       name = name.replace(
         new RegExp(`([\\s,.:;"'-(]|^)${conjunction}([\\s,:;"'-(]|$)`, 'g'),
-        (...matches) => matches[1] + conjunction.toLowerCase() + matches[2]
+        (...matches) => matches[1] + conjunction.toLowerCase() + matches[2],
       )
     }
     return name
@@ -344,7 +344,7 @@ class Environment {
     for (const lowerCase of this.LOWER_CASE_WORDS) {
       name = name.replace(
         new RegExp(`([\\s,.:;"'-(]|^)${lowerCase}([\\s,.:;"'-(]|$)`, 'g'),
-        (...matches) => matches[1] + lowerCase.toLowerCase() + matches[2]
+        (...matches) => matches[1] + lowerCase.toLowerCase() + matches[2],
       )
     }
     return name
@@ -361,7 +361,7 @@ class Environment {
     for (const postNominal of postNominals) {
       name = name.replace(
         new RegExp(`([\\s,.:;"'-(]|^)${this.capitalizeFirstLetters(postNominal)}([\\s,.:;"'-(]|$)`, 'g'),
-        (...matches) => matches[1] + postNominal + matches[2]
+        (...matches) => matches[1] + postNominal + matches[2],
       )
     }
     return name

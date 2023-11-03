@@ -23,7 +23,7 @@ We accept contributions via Pull Requests on [Github](https://github.com/danisei
 ## Running Tests
 
 ``` bash
-yarn test:coverage
+pnpm test:coverage
 ```
 
 **Thank you and happy coding!**

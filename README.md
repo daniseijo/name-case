@@ -35,6 +35,12 @@ Via yarn
 yarn add name-fixer
 ```
 
+Via pnpm
+
+```bash
+pnpm add name-fixer
+```
+
 ## Usage
 
 ### Basic usage
@@ -113,7 +119,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed
 ## Testing
 
 ```bash
-yarn test
+pnpm test
 ```
 
 ## Contributing
