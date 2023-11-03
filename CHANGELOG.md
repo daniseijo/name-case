@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1]
+
 ### Added
 
 - Github Action for the `main` pipeline.
@@ -27,5 +29,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 Initial release
 
-[unreleased]: https://github.com/daniseijo/name-fixer/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/daniseijo/name-fixer/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/daniseijo/name-fixer/releases/tag/v1.0.1
 [1.0.0]: https://github.com/daniseijo/name-fixer/releases/tag/v1.0.0
