@@ -1,6 +1,6 @@
 {
   "name": "name-fixer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A fully typed library for fixing capitalization of people's names. Based on tamtamchik PHP library.",
   "main": "dist/index.js",
   "source": "src/index.ts",
